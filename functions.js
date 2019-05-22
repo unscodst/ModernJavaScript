@@ -19,14 +19,18 @@
 // })('Brad');
 
 // PROPERTY METHODS
+numbers = [2,3]
 const todo =  {
-    add: function () {console.log('Add todo..');},
+    add: todoAdd(numbers),
     edit: function(id) { console.log(`Edit todo ${id}`)}
 }
 todo.delete = function() {
     console.log('Delete todo..')
 }
-
-todo.add();
+function todoAdd(numbers) {
+    console.log('Add todo..');
+    console.log(numbers[0] + numbers[1])
+}
+// todo.add();
 todo.edit(22);
 todo.delete();
