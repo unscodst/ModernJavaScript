@@ -40,7 +40,6 @@ function calculateResults() {
     } else {
         // Hide results
         document.getElementById('results').style.display = 'none';
-
         // Hide loader
         document.getElementById('loading').style.display = 'none';
         // console.log('Please check your numbers');
