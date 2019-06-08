@@ -24,13 +24,41 @@ UI.prototype.addBookToList = function (book) {
     list.appendChild(row);
 
 }
+// Show alert
+UI.prototype.showAlert = function(msg, className) {
+    // Create div
+    const div = document.createElement('div');
+    // Add classes
+    div.className = `alert ${className}`;
+    // Add text
+    div.appendChild(document.createTextNode(msg));
+    // Get container
+    const container = document.querySelector('.container');
+    // Get form
+    const form = document.querySelector('#book-form');
+    // Insert alert
+    container.insertBefore(div, form);
+
+    // Timeout after 3 seconds
+    setTimeout(function (){
+        document.querySelector('.alert').remove();
+    },3000)
+}
+
+// Delete Book
+UI.prototype.deleteBook = function(target) {
+    if(target.className === 'delete') {
+        target.parentElement.parentElement.remove();
+    }
+}
+// Clear inputs
 UI.prototype.clearInputs = function() {
     document.getElementById('title').value = '';
     document.getElementById('author').value = '';
     document.getElementById('isbn').value = '';
 }
 
-// Event Listeners
+// Event Listeners for Add Book
 document.getElementById('book-form').addEventListener('submit', 
     function(e) {
         // Get form values
@@ -44,11 +72,33 @@ document.getElementById('book-form').addEventListener('submit',
 
         // Instantiate UI Object
         const ui = new UI();
-        
-        // Add book to list
-        ui.addBookToList(book);
-        // Clear inputs
-        ui.clearInputs();
 
+        if(title === '' || author === '' || isbn === '') {
+            // Error Alert
+            msg = 'Please fill in all fields.'
+            
+            ui.showAlert(msg,'error')
+        } else {
+            // Add book to list
+            ui.addBookToList(book);
+            // Clear inputs
+            ui.clearInputs();
+            msg = 'Book added';
+            ui.showAlert(msg, 'success');
+        }
         console.log(book)
 });
+
+// Event Listener for Delete Book
+document.getElementById('book-list').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Instantiate UI
+    const ui = new UI();
+    ui.deleteBook(e.target);
+    
+    // Show message
+    msg = 'Book removed';
+    ui.showAlert(msg, 'success');
+
+})
