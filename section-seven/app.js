@@ -1,65 +1,100 @@
+//#region Chuck Norris Jokes API
+// document.querySelector('.get-jokes').addEventListener('click',getJokes);
+
+// function getJokes(e) {
+//     const number = document.querySelector('input[type="number"]').value;
+
+//     const xhr = new XMLHttpRequest();
+
+//     xhr.open('GET',`http://api.icndb.com/jokes/random/${number}`,true);
+
+//     xhr.onload = function() {
+//         if(this.status === 200){
+//             const response = JSON.parse(this.responseText);
+
+//             let output = '';
+//             if(response.type === 'success') {
+//                 response.value.forEach(function(joke) {
+//                     output += `
+//                         <li>${joke.joke}</li>
+//                     `;
+//                 })
+
+//             } else output += '<li>Something went wrong</li>';
+
+//             document.querySelector('.jokes').innerHTML = output;
+
+//             console.log(response)
+//         }
+//     }
+
+//     xhr.send();
+//     e.preventDefault();
+// }
+//#endregion
+
+//#region XHR JSON
+// document.getElementById('button1').addEventListener('click', loadCustomer);
+// document.getElementById('button2').addEventListener('click', loadCustomers);
 
 
-document.getElementById('button1').addEventListener('click', loadCustomer);
-document.getElementById('button2').addEventListener('click', loadCustomers);
+// // Load Customer
+// function loadCustomer(e) {
+//     const xhr = new XMLHttpRequest();
 
+//     xhr.open('GET', 'customer.json', true);
 
-// Load Customer
-function loadCustomer(e) {
-    const xhr = new XMLHttpRequest();
+//     xhr.onload = function() {
+//         if(this.status === 200) {
+//             const customer = JSON.parse(this.responseText);
 
-    xhr.open('GET', 'customer.json', true);
+//             const output = `
+//              <ul>
+//                 <li> ID: ${customer.id}</li>
+//                 <li> Name: ${customer.name}</li>
+//                 <li> Company: ${customer.company}</li>
+//                 <li> Phone: ${customer.phone}</li>
+//              </ul>
+//             `;
 
-    xhr.onload = function() {
-        if(this.status === 200) {
-            const customer = JSON.parse(this.responseText);
+//             document.getElementById('customer').innerHTML = output;
+//         }
+//     }
 
-            const output = `
-             <ul>
-                <li> ID: ${customer.id}</li>
-                <li> Name: ${customer.name}</li>
-                <li> Company: ${customer.company}</li>
-                <li> Phone: ${customer.phone}</li>
-             </ul>
-            `;
+//     xhr.send();
+// }
 
-            document.getElementById('customer').innerHTML = output;
-        }
-    }
+// // Load Customers
+// function loadCustomers(e) {
+//     const xhr = new XMLHttpRequest();
 
-    xhr.send();
-}
+//     xhr.open('GET', 'customers.json', true);
 
-// Load Customers
-function loadCustomers(e) {
-    const xhr = new XMLHttpRequest();
+//     xhr.onload = function() {
+//         if(this.status === 200) {
+//             const customers = JSON.parse(this.responseText);
 
-    xhr.open('GET', 'customers.json', true);
+//             let output = '';
 
-    xhr.onload = function() {
-        if(this.status === 200) {
-            const customers = JSON.parse(this.responseText);
-
-            let output = '';
-
-            customers.forEach(function(customer) {
-                output += `
-                <ul>
-                    <li> ID: ${customer.id}</li>
-                    <li> Name: ${customer.name}</li>
-                    <li> Company: ${customer.company}</li>
-                    <li> Phone: ${customer.phone}</li>
-                </ul>
-                `;
-            });
+//             customers.forEach(function(customer) {
+//                 output += `
+//                 <ul>
+//                     <li> ID: ${customer.id}</li>
+//                     <li> Name: ${customer.name}</li>
+//                     <li> Company: ${customer.company}</li>
+//                     <li> Phone: ${customer.phone}</li>
+//                 </ul>
+//                 `;
+//             });
             
 
-            document.getElementById('customers').innerHTML = output;
-        }
-    }
+//             document.getElementById('customers').innerHTML = output;
+//         }
+//     }
 
-    xhr.send();
-}
+//     xhr.send();
+// }
+//#endregion
 
 //#region XHR Code
 /// XHR Code
