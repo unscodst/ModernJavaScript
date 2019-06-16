@@ -1,57 +1,92 @@
-//#region Fetch Arrow Functions
-document.getElementById('button1').addEventListener('click', getText);
-document.getElementById('button2').addEventListener('click', getJson);
-document.getElementById('button3').addEventListener('click', getExternal);
 
-// Get local text file data
-function getText() {
-    fetch('test.txt')
-    .then(response => response.text())
-    .then(data => {
-        // console.log(data);
-        document.getElementById('output').innerHTML = data;
-    })
-    .catch(error => console.log(error));
-};
+//#region ES7 Async/Await
+// async function myFunc() {
+//     // return 'Hello';
+//     const promise = new Promise((resolve, reject) => {
+//         setTimeout(() => resolve('Hello'), 1000);
+//     });
 
-// Get local JSON data
-function getJson() {
-    fetch('post.json')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        let output = '';
-        data.forEach(post => {
-            output += `
-                <li>${post.title}</li>
-            `;
-        });
-        document.getElementById('output').innerHTML = output;
-        
-    })
-    .catch(error => console.log(error));
+//     const error = false;
+//     if(!error) {
+//         const response = await promise; // Wait until promise is resolved
+//         return response;
+//     } else await Promise.reject(new Error('Something went wrong'))
+
+// }
+// myFunc()
+// .then(response => console.log(response))
+// .catch(error => console.log(error))
+
+async function getUsers() {
+    // await response of the fetch call
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+
+    // Only proceed once it's resolved
+    const data = await response.json();
+
+    // Only proceed once the second promise is resolved.
+    return data;
 }
 
-// Get from external API
-function getExternal() {
-    fetch('https://api.github.com/users/unscodst/repos')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        let output = '';
-        data.forEach(repo => {
-            output += `
-                <li>${repo.name}</li>
-            `;
-        });
-        document.getElementById('output').innerHTML = output;
-        
-    })
-    .catch(error => console.log(error));
-}
+getUsers()
+.then(users => console.log(users))
+
 
 //#endregion
 
+//#region Fetch Arrow Functions
+// document.getElementById('button1').addEventListener('click', getText);
+// document.getElementById('button2').addEventListener('click', getJson);
+// document.getElementById('button3').addEventListener('click', getExternal);
+
+// // Get local text file data
+// function getText() {
+//     fetch('test.txt')
+//     .then(response => response.text())
+//     .then(data => {
+//         // console.log(data);
+//         document.getElementById('output').innerHTML = data;
+//     })
+//     .catch(error => console.log(error));
+// };
+
+// // Get local JSON data
+// function getJson() {
+//     fetch('post.json')
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data);
+//         let output = '';
+//         data.forEach(post => {
+//             output += `
+//                 <li>${post.title}</li>
+//             `;
+//         });
+//         document.getElementById('output').innerHTML = output;
+        
+//     })
+//     .catch(error => console.log(error));
+// }
+
+// // Get from external API
+// function getExternal() {
+//     fetch('https://api.github.com/users/unscodst/repos')
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data);
+//         let output = '';
+//         data.forEach(repo => {
+//             output += `
+//                 <li>${repo.name}</li>
+//             `;
+//         });
+//         document.getElementById('output').innerHTML = output;
+        
+//     })
+//     .catch(error => console.log(error));
+// }
+
+//#endregion
 
 //#region Arrow Functions
 // const sayHello = function() {
@@ -79,7 +114,7 @@ function getExternal() {
 
 // sayHello('Brad','Smith');
 
-const users = ['Nathan', 'John', 'William'];
+// const users = ['Nathan', 'John', 'William'];
 
 // const nameLengths = users.map(function(name) {
 //     return name.length;
@@ -91,9 +126,9 @@ const users = ['Nathan', 'John', 'William'];
 // });
 
 // Shortest
-const nameLengths = users.map(name => name.length);
+// const nameLengths = users.map(name => name.length);
 
-console.log(nameLengths)
+// console.log(nameLengths)
 
 //#endregion
 
