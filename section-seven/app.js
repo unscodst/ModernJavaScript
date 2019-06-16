@@ -1,4 +1,101 @@
+//#region Fetch Arrow Functions
+document.getElementById('button1').addEventListener('click', getText);
+document.getElementById('button2').addEventListener('click', getJson);
+document.getElementById('button3').addEventListener('click', getExternal);
 
+// Get local text file data
+function getText() {
+    fetch('test.txt')
+    .then(response => response.text())
+    .then(data => {
+        // console.log(data);
+        document.getElementById('output').innerHTML = data;
+    })
+    .catch(error => console.log(error));
+};
+
+// Get local JSON data
+function getJson() {
+    fetch('post.json')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        let output = '';
+        data.forEach(post => {
+            output += `
+                <li>${post.title}</li>
+            `;
+        });
+        document.getElementById('output').innerHTML = output;
+        
+    })
+    .catch(error => console.log(error));
+}
+
+// Get from external API
+function getExternal() {
+    fetch('https://api.github.com/users/unscodst/repos')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        let output = '';
+        data.forEach(repo => {
+            output += `
+                <li>${repo.name}</li>
+            `;
+        });
+        document.getElementById('output').innerHTML = output;
+        
+    })
+    .catch(error => console.log(error));
+}
+
+//#endregion
+
+
+//#region Arrow Functions
+// const sayHello = function() {
+//     console.log('Hello')
+// }
+
+// const sayHello = () => {
+//     console.log('Hello')
+// }
+
+// One line functon does not need braces
+// const sayHello = () => console.log('Hello');
+
+// One line returns
+// const sayHello = () => 'Hello';
+
+// return object
+// const sayHello = () => ({msg: 'Hello'});
+
+// Single Parameter does not need parenthesis
+// const sayHello = name => console.log(`Hello ${name}`)
+
+// Multiple Parameters need parenthesis
+// const sayHello = (fisrtName, lastName) => console.log(`Hello ${fisrtName} ${lastName}`);
+
+// sayHello('Brad','Smith');
+
+const users = ['Nathan', 'John', 'William'];
+
+// const nameLengths = users.map(function(name) {
+//     return name.length;
+// });
+
+// Shorter
+// const nameLengths = users.map((name) => {
+//     return name.length;
+// });
+
+// Shortest
+const nameLengths = users.map(name => name.length);
+
+console.log(nameLengths)
+
+//#endregion
 
 //#region Fetch API Sandbox
 // document.getElementById('button1').addEventListener('click', getText);
