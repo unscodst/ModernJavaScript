@@ -1,3 +1,71 @@
+
+
+//#region Fetch API Sandbox
+// document.getElementById('button1').addEventListener('click', getText);
+// document.getElementById('button2').addEventListener('click', getJson);
+// document.getElementById('button3').addEventListener('click', getExternal);
+
+// // Get local text file data
+// function getText() {
+//     fetch('test.txt')
+//     .then(function(response) {
+//         return response.text();
+//     })
+//     .then(function(data) {
+//         // console.log(data);
+//         document.getElementById('output').innerHTML = data;
+//     })
+//     .catch(function(error) {
+//         console.log(error)
+//     });
+// };
+
+// // Get local JSON data
+// function getJson() {
+//     fetch('post.json')
+//     .then(function(response) {
+//         return response.json();
+//     })
+//     .then(function(data) {
+//         console.log(data);
+//         let output = '';
+//         data.forEach(function(post) {
+//             output += `
+//                 <li>${post.title}</li>
+//             `;
+//         });
+//         document.getElementById('output').innerHTML = output;
+        
+//     })
+//     .catch(function(error) {
+//         console.log(error)
+//     });
+// }
+
+// // Get from external API
+// function getExternal() {
+//     fetch('https://api.github.com/users/unscodst/repos')
+//     .then(function(response) {
+//         return response.json();
+//     })
+//     .then(function(data) {
+//         console.log(data);
+//         let output = '';
+//         data.forEach(function(repo) {
+//             output += `
+//                 <li>${repo.name}</li>
+//             `;
+//         });
+//         document.getElementById('output').innerHTML = output;
+        
+//     })
+//     .catch(function(error) {
+//         console.log(error)
+//     });
+// }
+
+//#endregion
+
 //#region Promises
 // const posts = [
 //     {title: 'Post One', body:'This is post one'},
