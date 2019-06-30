@@ -8,5 +8,5 @@
 //     return `Hello ${person.name}`;
 // }
 
-const greeting = 'Hello World';
-export default greeting;
+// const greeting = 'Hello World';
+// export default greeting;
